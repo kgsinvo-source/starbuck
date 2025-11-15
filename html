@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title>Кавовий сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f2ee;
+            margin: 0;
+            color: #3b2f2f;
+        }
+        header {
+            background: #4b2e2b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        .product {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            background: #7a4f38;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #5f3c2c;
+        }
+        #cart-items {
+            margin-top: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 10px;
+        }
+        #reviews {
+            background: #fff;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .review {
+            background: #f1e9e5;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Мир Кави</h1>
+</header>
+
+<div class="container">
+
+    <h2>Наші товари</h2>
+
+    <div class="product">
+        <span>Арабіка — 200 г</span>
+        <button onclick="addToCart('Арабіка — 200 г')">До корзини</button>
+    </div>
+
+    <div class="product">
+        <span>Робуста — 250 г</span>
+        <button onclick="addToCart('Робуста — 250 г')">До корзини</button>
+    </div>
+
+    <div class="product">
+        <span>Еспресо-суміш — 500 г</span>
+        <button onclick="addToCart('Еспресо-суміш — 500 г')">До корзини</button>
+    </div>
+
+
+    <h2>Корзина</h2>
+    <div id="cart-items">Корзина порожня.</div>
+
+
+    <h2>Відгуки</h2>
+
+    <div id="reviews"></div>
+
+    <h3>Залишити відгук</h3>
+
+    <input type="text" id="name" placeholder="Ваше ім'я">
+    <textarea id="text" placeholder="Ваш відгук"></textarea>
+    <button onclick="addReview()">Надіслати</button>
+
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(item) {
+    cart.push(item);
+    updateCart();
+}
+
+function updateCart() {
+    const block = document.getElementById("cart-items");
+
+    if (cart.length === 0) {
+        block.innerHTML = "Корзина порожня.";
+        return;
+    }
+
+    block.innerHTML = cart.map((i, index) => `<div>${index + 1}. ${i}</div>`).join("");
+}
+
+
+let reviews = [];
+
+function addReview() {
+    const name = document.getElementById("name").value.trim();
+    const text = document.getElementById("text").value.trim();
+
+    if (!name || !text) {
+        alert("Треба заповнити всі поля🤓");
+        return;
+    }
+
+    reviews.push({ name, text });
+    updateReviews();
+
+    document.getElementById("name").value = "";
+    document.getElementById("text").value = "";
+}
+
+function updateReviews() {
+    const block = document.getElementById("reviews");
+    block.innerHTML = reviews.map(r => `
+        <div class="review">
+            <strong>${r.name}</strong><br>
+            ${r.text}
+        </div>
+    `).join("");
+}
+</script>
+
+</body>
+</html>
