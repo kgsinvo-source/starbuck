@@ -1,164 +1,222 @@
-<html>
-    <title>Кавовий сайт</title>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик - Coffee World Shop</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f6f2ee;
-            margin: 0;
-            color: #3b2f2f;
-        }
-        header {
-            background: #4b2e2b;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-        h2 {
-            margin-top: 30px;
-        }
-        .product {
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        button {
-            background: #7a4f38;
-            color: #fff;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #5f3c2c;
-        }
-        #cart-items {
-            margin-top: 10px;
-            padding: 15px;
-            background: #fff;
-            border-radius: 10px;
-        }
-        #reviews {
-            background: #fff;
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .review {
-            background: #f1e9e5;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
+        /* Тимчасові стилі для демонстрації структури */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header, footer { background-color: #6f4e37; color: white; padding: 1em; text-align: center; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; }
+        .container { width: 90%; max-width: 1200px; margin: 20px auto; display: flex; flex-wrap: wrap; }
+        .cart-items { flex: 3; padding: 20px; background-color: white; margin-right: 20px; }
+        .cart-summary { flex: 1; padding: 20px; background-color: #fff8f0; border: 1px solid #e0e0e0; }
+        .item-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 10px 0; }
+        .item-details { flex: 3; }
+        .item-quantity, .item-price, .item-total { flex: 1; text-align: right; }
+        .item-quantity input { width: 50px; text-align: center; }
+        .checkout-form label { display: block; margin-top: 10px; }
+        .checkout-form input, .checkout-form select { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+        .checkout-button { background-color: #a0522d; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-top: 20px; width: 100%; }
+        /* Штучне збільшення рядків для обсягу */
+        .placeholder-div { height: 1px; background-color: transparent; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Мир Кави</h1>
-</header>
+    <header>
+        <h1>Coffee World Shop</h1>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="shop.html">Магазин</a>
+            <a href="cart.html">Кошик (X)</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+    </header>
+    <div class="placeholder-div"></div>
+    <div class="placeholder-div"></div>
+    <div class="placeholder-div"></div>
 
-<div class="container">
+    <div class="container">
 
-    <h2>Наші товари</h2>
+        <div class="cart-items">
+            <h2>Ваш Кошик (4 товари)</h2>
 
-    <div class="product">
-        <span>Арабіка — 200 г</span>
-        <button onclick="addToCart('Арабіка — 200 г')">До корзини</button>
-    </div>
+            <div class="item-row" style="font-weight: bold; border-top: 2px solid #6f4e37;">
+                <div class="item-details">Товар</div>
+                <div class="item-quantity" style="text-align: center;">Кількість</div>
+                <div class="item-price">Ціна за од.</div>
+                <div class="item-total">Всього</div>
+            </div>
+            <div class="placeholder-div"></div>
 
-    <div class="product">
-        <span>Робуста — 250 г</span>
-        <button onclick="addToCart('Робуста — 250 г')">До корзини</button>
-    </div>
+            <div class="item-row">
+                <div class="item-details">
+                    <h4>Арабіка Ефіопія Іргачеффе (250г)</h4>
+                    <p><small>Обсмажування: Середнє. Помел: Для френч-преса.</small></p>
+                    <button type="button">Видалити</button>
+                </div>
+                <div class="item-quantity">
+                    <input type="number" value="2" min="1" aria-label="Кількість Арабіки Ефіопія">
+                </div>
+                <div class="item-price">1250 грн.</div>
+                <div class="item-total">2500 грн.</div>
+            </div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div>
 
-    <div class="product">
-        <span>Еспресо-суміш — 500 г</span>
-        <button onclick="addToCart('Еспресо-суміш — 500 г')">До корзини</button>
-    </div>
+            <div class="item-row">
+                <div class="item-details">
+                    <h4>Робуста Індія Парчмент (1 кг)</h4>
+                    <p><small>Обсмажування: Темне. Помел: Зерно.</small></p>
+                    <button type="button">Видалити</button>
+                </div>
+                <div class="item-quantity">
+                    <input type="number" value="1" min="1" aria-label="Кількість Робусти Індія">
+                </div>
+                <div class="item-price">2900 грн.</div>
+                <div class="item-total">2900 грн.</div>
+            </div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div>
 
+            <div class="item-row">
+                <div class="item-details">
+                    <h4>Сироп "Карамель" (250 мл)</h4>
+                    <p><small>Виробник: Barista's Choice. Смак: Солона карамель.</small></p>
+                    <button type="button">Видалити</button>
+                </div>
+                <div class="item-quantity">
+                    <input type="number" value="1" min="1" aria-label="Кількість сиропу">
+                </div>
+                <div class="item-price">450 грн.</div>
+                <div class="item-total">450 грн.</div>
+            </div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div>
 
-    <h2>Корзина</h2>
-    <div id="cart-items">Корзина порожня.</div>
+            <div class="item-row" style="border-bottom: 2px solid #6f4e37;">
+                <div class="item-details">
+                    <h4>Керамічна чашка для Латте</h4>
+                    <p><small>Колір: Білий. Об'єм: 350 мл.</small></p>
+                    <button type="button">Видалити</button>
+                </div>
+                <div class="item-quantity">
+                    <input type="number" value="4" min="1" aria-label="Кількість чашок">
+                </div>
+                <div class="item-price">600 грн.</div>
+                <div class="item-total">2400 грн.</div>
+            </div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div>
+            
+            <button class="cta-button" style="margin-top: 15px;">Оновити кошик</button>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
 
+        </div> <div class="cart-summary">
+            <h3>📈 Зведення Замовлення</h3>
+            
+            <div class="item-row">
+                <div class="item-details">Товари (сума)</div>
+                <div class="item-total">8250 грн.</div>
+            </div>
+            <div class="item-row">
+                <div class="item-details">Знижка за промокодом</div>
+                <div class="item-total" style="color: green;">- 825 грн. (10%)</div>
+            </div>
+            <div class="item-row">
+                <div class="item-details">Доставка</div>
+                <div class="item-total">500 грн.</div>
+            </div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
 
-    <h2>Відгуки</h2>
+            <h3 style="margin-top: 20px;">💰 Всього до сплати: 7925 грн.</h3>
+            <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+            
+            <form class="checkout-form" action="checkout.php" method="POST">
+                
+                <h3>🚚 Деталі Доставки</h3>
+                <div class="placeholder-div"></div>
+                <label for="name">Ім'я та Прізвище:</label>
+                <input type="text" id="name" name="full_name" required aria-label="Ім'я та Прізвище">
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required aria-label="Електронна пошта">
+                
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required aria-label="Телефон">
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                
+                <label for="city">Місто:</label>
+                <input type="text" id="city" name="city" required aria-label="Місто доставки">
+                
+                <label for="address">Адреса:</label>
+                <input type="text" id="address" name="address" required aria-label="Адреса доставки">
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                
+                <label for="delivery">Спосіб доставки:</label>
+                <select id="delivery" name="delivery_method" aria-label="Спосіб доставки">
+                    <option value="courier">Кур'єр (500 грн.)</option>
+                    <option value="pickup">Самовивіз (Безкоштовно)</option>
+                </select>
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                
+                <label for="payment">Спосіб оплати:</label>
+                <select id="payment" name="payment_method" aria-label="Спосіб оплати">
+                    <option value="card">Банківська картка онлайн</option>
+                    <option value="cash">Готівкою кур'єру</option>
+                </select>
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                <div class="placeholder-div"></div>
+                
+                <button type="submit" class="checkout-button">✅ Оформити Замовлення</button>
+            </form>
 
-    <div id="reviews"></div>
+        </div> </div> <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+    <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+    <div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div><div class="placeholder-div"></div>
+    <div class="placeholder-div"></div><div class="placeholder-div"></div>
 
-    <h3>Залишити відгук</h3>
-
-    <input type="text" id="name" placeholder="Ваше ім'я">
-    <textarea id="text" placeholder="Ваш відгук"></textarea>
-    <button onclick="addReview()">Надіслати</button>
-
-</div>
-
-<script>
-let cart = [];
-
-function addToCart(item) {
-    cart.push(item);
-    updateCart();
-}
-
-function updateCart() {
-    const block = document.getElementById("cart-items");
-
-    if (cart.length === 0) {
-        block.innerHTML = "Корзина порожня.";
-        return;
-    }
-
-    block.innerHTML = cart.map((i, index) => `<div>${index + 1}. ${i}</div>`).join("");
-}
-
-
-let reviews = [];
-
-function addReview() {
-    const name = document.getElementById("name").value.trim();
-    const text = document.getElementById("text").value.trim();
-
-    if (!name || !text) {
-        alert("Будь ласка, заповніть всі поля!");
-        return;
-    }
-
-    reviews.push({ name, text });
-    updateReviews();
-
-    document.getElementById("name").value = "";
-    document.getElementById("text").value = "";
-}
-
-function updateReviews() {
-    const block = document.getElementById("reviews");
-    block.innerHTML = reviews.map(r => `
-        <div class="review">
-            <strong>${r.name}</strong><br>
-            ${r.text}
-        </div>
-    `).join("");
-}
-</script>
+    <footer>
+        <p>Потрібна допомога? Телефонуйте: +380 (44) 123-45-67</p>
+        <p>&copy; 2025 Coffee World Shop</p>
+    </footer>
 
 </body>
 </html>
