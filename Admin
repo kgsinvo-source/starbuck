@@ -1,0 +1,58 @@
+<?php
+// admin/login.php
+
+session_start();
+
+// Приклад облікових даних (замініть на реальне отримання з бази даних)
+$valid_username = 'admin';
+// Використовуйте хеш пароля, створений за допомогою password_hash()
+$valid_password_hash = '$2y$10$tM0OQxT3E6gXpYv6gR3jO.123456789012345678901234567890'; // Це хеш для 'password123'
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input_username = $_POST['username'] ?? '';
+    $input_password = $_POST['password'] ?? '';
+
+    // Перевірка імені користувача та пароля
+    if ($input_username === $valid_username && password_verify($input_password, $valid_password_hash)) {
+        
+        // Аутентифікація успішна
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $valid_username; // Можна зберегти ім'я
+        
+        // Перенаправлення на головну сторінку адмін-панелі
+        header('Location: index.php');
+        exit();
+    } else {
+        $error = "Невірний логін або пароль.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід в Адмін-панель</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Вхід для адміністратора</h1>
+        <?php if ($error): ?>
+            <p class="error-message"><?php echo $error; ?></p>
+        <?php endif; ?>
+        
+        <form method="POST">
+            <label for="username">Логін:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            
+            <button type="submit">Увійти</button>
+        </form>
+    </div>
+</body>
+</html>
